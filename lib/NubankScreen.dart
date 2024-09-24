@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -13,6 +14,44 @@ class NubankScreen extends StatefulWidget {
 }
 
 class _NubankScreenState extends State<NubankScreen> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+  Timer? _timer;
+
+  final List<String> images = [
+    'https://via.placeholder.com/400x200.png?text=Imagem+1',
+    'https://via.placeholder.com/400x200.png?text=Imagem+2',
+    'https://via.placeholder.com/400x200.png?text=Imagem+3',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _startAutoScroll() {
+    _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      if (_currentPage < images.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+
+      _pageController.animateToPage(
+        _currentPage,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,192 +73,200 @@ class _NubankScreenState extends State<NubankScreen> {
           SizedBox(width: 20),
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Color(0xFF06143B),
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Olá, Katia',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Cartão de crédito',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.arrow_forward_ios, size: 16))
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        buildIconButton(
-                            'Quero Adotar', Icons.favorite, Colors.white),
-                        buildIconButton('Cadastrar Pet', FontAwesomeIcons.dog,
-                            Colors.white),
-                        buildIconButton(
-                            'Pets Cadastrados', Icons.pets, Colors.white),
-                        buildIconButton('Ajude-nos', Icons.volunteer_activism,
-                            Colors.white),
-                        buildIconButton('Denuncie',
-                            Icons.phone_android_outlined, Colors.white),
-                        buildIconButton(
-                            'Se divirta', Icons.gamepad, Colors.white),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  buildCardButton(
-                      FontAwesomeIcons.dog, 'Meus Pets cadastrados'),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.purple[50],
-                borderRadius: BorderRadius.circular(12),
-              ),
+
+
+        body: ListView(
+          children: [
+            Container(
+              color: Color(0xFF06143B),
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Text(
-                        'Pix no Crédito: faça pagamentos sem usar o saldo da conta.',
-                        style: TextStyle(fontSize: 14),
+                    Text(
+                      'Olá, Katia',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.arrow_forward, color: Colors.purple),
+                    SizedBox(height: 5),
+                    InkWell(
+                      onTap: () {
+                        print("Row clicado");
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Conta',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Icon(Icons.arrow_forward_ios, size: 16, color: Colors.white),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          buildIconButton('Quero Adotar', Icons.favorite, Colors.white),
+                          buildIconButton('Cadastrar Pet', FontAwesomeIcons.dog, Colors.white),
+                          buildIconButton('Pets Cadastrados', Icons.pets, Colors.white),
+                          buildIconButton('Ajude-nos', Icons.volunteer_activism, Colors.white),
+                          buildIconButton('Denuncie', Icons.phone_android_outlined, Colors.white),
+                          buildIconButton('Se divirta', Icons.gamepad, Colors.white),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    buildCardButton(FontAwesomeIcons.dog, 'Meus Pets cadastrados'),
                   ],
                 ),
               ),
             ),
-          ),
-          Divider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.purple[50],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Pix no Crédito: faça pagamentos sem usar o saldo da conta.',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                      Icon(Icons.arrow_forward, color: Colors.purple),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Veja alguns cães que estão em busca de uma lar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Cartão de crédito',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                Icon(Icons.arrow_back_ios, size: 16),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25),
+                  child: Container(
+                    width: 320,
+                    height: 220,
+                    color: Colors.pink,
+                    child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: images.length,
+                      itemBuilder: (context, index) {
+                        return Image.network(
+                          images[index],
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
                   ),
                 ),
                 Icon(Icons.arrow_forward_ios, size: 16),
+
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-            child: Text(
-              'Fatura atual',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text(
-              'R\$ 869,37',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  buildBottomActionButton(FontAwesomeIcons.bone, 'Doe Ração'),
+                  buildBottomActionButton(Icons.report, 'Denunciar Abandono'),
+                  buildBottomActionButton(Icons.list, 'Minhas '),
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text(
-              'Limite disponível de R\$ 0,30',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                buildBottomActionButton(Icons.arrow_upward, 'Aliviar fatura'),
-                buildBottomActionButton(Icons.attach_money, 'Fazer pagamento'),
-                buildBottomActionButton(Icons.shopping_cart, 'Parcelar compra'),
-              ],
-            ),
-          ),
-        ],
-      ),
+          ],
+        )
+
+
+
     );
   }
 
-  Widget buildIconButton(String text, IconData icon, Color cor,
-      {String badge = ''}) {
+  Widget _buildIndicator() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(images.length, (index) {
+        return AnimatedContainer(
+          duration: Duration(milliseconds: 500),
+          margin: EdgeInsets.symmetric(horizontal: 4),
+          width: _currentPage == index ? 12 : 8,
+          height: _currentPage == index ? 12 : 8,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: _currentPage == index ? Colors.blue : Colors.grey,
+          ),
+        );
+      }),
+    );
+  }
+
+  Widget buildIconButton(String text, IconData icon, Color cor, {String badge = ''}) {
     return Padding(
       padding: const EdgeInsets.only(right: 20),
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.grey[200],
-                radius: 30,
-                child: Icon(icon, color: Colors.pinkAccent, size: 30),
-              ),
-              if (badge.isNotEmpty)
-                Positioned(
-                  bottom: -5,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: Colors.purple,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      badge,
-                      style: TextStyle(color: Colors.white, fontSize: 10),
-                    ),
-                  ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 1),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.grey[200],
+                  radius: 30,
+                  child: Icon(icon, color: Colors.pinkAccent, size: 30),
                 ),
-            ],
-          ),
-          SizedBox(height: 10),
-          Text(
-            text,
-            style: TextStyle(fontSize: 13, color: cor),
-          ),
-        ],
+
+              ],
+            ),
+            SizedBox(height: 10),
+            Text(
+              text,
+              style: TextStyle(fontSize: 13, color: cor),
+            ),
+          ],
+        ),
       ),
     );
   }
