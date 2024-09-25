@@ -1,5 +1,6 @@
 import 'package:agora/Report.dart';
 import 'package:agora/Pages/cadastro_page.dart';
+import 'package:agora/petss/Tela_adocao.dart';
 import 'package:agora/telaCachorro.dart';
 import 'package:agora/Pages/telaInicial_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +17,7 @@ void main() async{
   );
   runApp(
     const MaterialApp(
-      home: telaInicial(),
+      home: Tela,
     ),
   );
 }
