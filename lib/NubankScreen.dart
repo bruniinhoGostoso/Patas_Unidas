@@ -2,11 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: NubankScreen(),
-  ));
-}
+
 
 class NubankScreen extends StatefulWidget {
   @override
@@ -55,24 +51,24 @@ class _NubankScreenState extends State<NubankScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color(0xFF06143B),
-        leading: Padding(
-          padding: const EdgeInsets.all(8),
-          child: CircleAvatar(
-            radius: 50,
-            backgroundColor: Colors.white.withOpacity(0.1),
-            child: Icon(Icons.add_a_photo, color: Colors.white),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Color(0xFF06143B),
+          leading: Padding(
+            padding: const EdgeInsets.all(8),
+            child: CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.white.withOpacity(0.1),
+              child: Icon(Icons.add_a_photo, color: Colors.white),
+            ),
           ),
+          actions: [
+            Icon(Icons.help_outline, color: Colors.white),
+            SizedBox(width: 20),
+            Icon(Icons.person_outline, color: Colors.white),
+            SizedBox(width: 20),
+          ],
         ),
-        actions: [
-          Icon(Icons.help_outline, color: Colors.white),
-          SizedBox(width: 20),
-          Icon(Icons.person_outline, color: Colors.white),
-          SizedBox(width: 20),
-        ],
-      ),
 
 
         body: ListView(
@@ -80,7 +76,8 @@ class _NubankScreenState extends State<NubankScreen> {
             Container(
               color: Color(0xFF06143B),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -111,7 +108,8 @@ class _NubankScreenState extends State<NubankScreen> {
                               ),
                             ),
                           ),
-                          Icon(Icons.arrow_forward_ios, size: 16, color: Colors.white),
+                          Icon(Icons.arrow_forward_ios, size: 16,
+                              color: Colors.white),
                         ],
                       ),
                     ),
@@ -120,23 +118,32 @@ class _NubankScreenState extends State<NubankScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          buildIconButton('Quero Adotar', Icons.favorite, Colors.white),
-                          buildIconButton('Cadastrar Pet', FontAwesomeIcons.dog, Colors.white),
-                          buildIconButton('Pets Cadastrados', Icons.pets, Colors.white),
-                          buildIconButton('Ajude-nos', Icons.volunteer_activism, Colors.white),
-                          buildIconButton('Denuncie', Icons.phone_android_outlined, Colors.white),
-                          buildIconButton('Se divirta', Icons.gamepad, Colors.white),
+                          buildIconButton(
+                              'Quero Adotar', Icons.favorite, Colors.white),
+                          buildIconButton('Cadastrar Pet', FontAwesomeIcons.dog,
+                              Colors.white),
+                          buildIconButton(
+                              'Pets Cadastrados', Icons.pets, Colors.white),
+                          buildIconButton('Ajude-nos', Icons.volunteer_activism,
+                              Colors.white),
+                          buildIconButton(
+                              'Denuncie', Icons.phone_android_outlined,
+                              Colors.white),
+                          buildIconButton(
+                              'Se divirta', Icons.gamepad, Colors.white),
                         ],
                       ),
                     ),
                     SizedBox(height: 20),
-                    buildCardButton(FontAwesomeIcons.dog, 'Meus Pets cadastrados'),
+                    buildCardButton(
+                        FontAwesomeIcons.dog, 'Meus Pets cadastrados'),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+              padding: const EdgeInsets.symmetric(
+                  vertical: 15.0, horizontal: 20),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.purple[50],
@@ -179,14 +186,21 @@ class _NubankScreenState extends State<NubankScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.arrow_back_ios, size: 16),
+                IconButton(
+                  onPressed: () =>
+                      _pageController.previousPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn),
+                  icon: Icon(Icons.arrow_back_ios, size: 16),
+                ),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 25),
                   child: Container(
-                    width: 320,
+                    width: 270,
                     height: 220,
-                    color: Colors.pink,
+                    color: Colors.transparent,
                     child: PageView.builder(
                       controller: _pageController,
                       itemCount: images.length,
@@ -199,8 +213,14 @@ class _NubankScreenState extends State<NubankScreen> {
                     ),
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios, size: 16),
 
+                IconButton(
+                  onPressed: () =>
+                      _pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn),
+                  icon: Icon(Icons.arrow_forward_ios, size: 16),
+                ),
               ],
             ),
             Spacer(),
@@ -217,7 +237,6 @@ class _NubankScreenState extends State<NubankScreen> {
             ),
           ],
         )
-
 
 
     );
@@ -241,7 +260,8 @@ class _NubankScreenState extends State<NubankScreen> {
     );
   }
 
-  Widget buildIconButton(String text, IconData icon, Color cor, {String badge = ''}) {
+  Widget buildIconButton(String text, IconData icon, Color cor,
+      {String badge = ''}) {
     return Padding(
       padding: const EdgeInsets.only(right: 20),
       child: Padding(

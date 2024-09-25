@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../NubankScreen.dart';
+
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -655,6 +657,60 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
+
+  Widget botComCor(Color c1, Color c2, String text1, String txt2) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 15,
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text(
+            text1,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(c1),
+              fixedSize: MaterialStateProperty.all(Size(150, 50)),
+              shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)))),
+        ),
+        SizedBox(width: 20),
+        ElevatedButton(
+          onPressed: () {
+
+
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return  NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
+              }),
+            );
+          },
+          child: Text(
+            txt2,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(c2),
+              fixedSize: MaterialStateProperty.all(Size(150, 50)),
+              shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)))),
+        ),
+      ],
+    );
+  }
+
 }
 
 
@@ -705,47 +761,4 @@ Widget botoes(String nome1, String nome2) {
 }
 
 
-Widget botComCor(Color c1, Color c2, String text1, String txt2) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      SizedBox(
-        width: 15,
-      ),
-      ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          text1,
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white),
-        ),
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(c1),
-            fixedSize: MaterialStateProperty.all(Size(150, 50)),
-            shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)))),
-      ),
-      SizedBox(width: 20),
-      ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          txt2,
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white),
-        ),
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(c2),
-            fixedSize: MaterialStateProperty.all(Size(150, 50)),
-            shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)))),
-      ),
-    ],
-  );
-}
 

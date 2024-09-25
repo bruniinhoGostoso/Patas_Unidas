@@ -1,3 +1,6 @@
+import 'package:agora/NubankScreen.dart';
+import 'package:agora/Pages/Login_Page.dart';
+import 'package:agora/Pages/Profile.dart';
 import 'package:agora/servico/autenticacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -177,7 +180,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                           style: TextStyle(color: Colors.grey.shade900),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: navegarTelaMenu,
                             child: Text(
                               "Entre aqui",
                               style: TextStyle(color: Colors.blue.shade700),
@@ -194,12 +197,17 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
     );
   }
 
+  void navegarTelaMenu() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return  TelaLogin();
+      }),
+    );
+  }
+
   void botaoClicado() async {
     if (_formkey.currentState!.validate()) {
-      if (queroEntrar == false) {
-        print("Login validado");
-        // Implementar lógica de login aqui.
-      } else {
         try {
           await _servico.cadastrarUsuario(
             nome: _nomeControler.text,
@@ -211,13 +219,21 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Cadastro realizado com sucesso!")),
           );
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return DetailPage() ; // Substitua 'ProximaTela' pela sua tela de destino
+            }),
+          );
+
         } catch (e) {
           // Mostrar mensagem de erro
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Erro ao cadastrar: $e")),
           );
         }
-      }
+
     } else {
       print("Formulário inválido");
     }

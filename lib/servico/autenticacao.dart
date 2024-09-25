@@ -7,20 +7,24 @@ class autenticacaoservico {
     required String nome,
     required String email,
     required String senha,
-  }) {
+  }) async {
     try {
-      _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: senha,
-
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+          email: email,
+          password: senha
       );
       print("Cadastrado");
-      // Aqui você pode salvar o nome do usuário no perfil, por exemplo.
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
     } catch (e) {
-      print("Erro ao cadastrar usuário: $e");
-      // Mostre uma mensagem de erro ao usuário ou trate de outra forma.
-    }  }
+      print(e);
+    }
+  }
+
+
 }
-
-
-

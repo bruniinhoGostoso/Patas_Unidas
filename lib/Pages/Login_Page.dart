@@ -1,8 +1,12 @@
+import 'package:agora/NubankScreen.dart';
 import 'package:agora/Pages/cadastro_page.dart';
+import 'package:agora/servico/autenticacaoLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+
+import '../servico/autenticacao.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
@@ -17,6 +21,8 @@ class _TelaLoginState extends State<TelaLogin> {
   TextEditingController _emailControler = TextEditingController();
   TextEditingController _senhalControler = TextEditingController();
   bool _isChecked = false;
+  bool _senhaEmailOk = false;
+  autenticacaoLogin _servico = autenticacaoLogin();
 
   @override
   Widget build(BuildContext context) {
@@ -113,9 +119,7 @@ class _TelaLoginState extends State<TelaLogin> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: () {
-                        // Ação do botão
-                      },
+                      onPressed: botaoClicado,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: 6.0, horizontal: 70.0),
@@ -187,6 +191,50 @@ class _TelaLoginState extends State<TelaLogin> {
       ),
     );
   }
+
+  void navegarTelaMenu() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return  NubankScreen();
+      }),
+    );
+  }
+
+  void botaoClicado() async {
+    if (_formkey.currentState!.validate()) {
+      try {
+        // Imprimir os valores dos campos para debugar
+        print("Email: ${_emailControler.text}");
+        print("Senha: ${_senhalControler.text}");
+
+        // Tenta fazer o login
+        await _servico.loginuser(
+            email: _emailControler.text, senha: _senhalControler.text);
+
+        // Se o login for bem-sucedido, navega para a próxima tela
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return  NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
+          }),
+        );
+
+        // Mostrar mensagem de sucesso
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Login efetuado com sucesso!")),
+        );
+      } catch (e) {
+        // Mostrar mensagem de erro com detalhes
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Erro ao realizar login: ${e.toString()}")),
+        );
+      }
+    } else {
+      print("Formulário inválido");
+    }
+  }
+
 }
 
 InputDecoration getAuthenticationInputDecoration(String label,
