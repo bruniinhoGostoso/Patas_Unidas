@@ -42,11 +42,11 @@ dependencies:
   google_fonts: ^6.2.1
   animated_bottom_navigation_bar: ^0.3.0
   flutter_switch: ^0.3.2
-  firebase_core: ^2.24.2
   image_picker: ^0.8.5+3
   ionicons: ^0.2.2
-  firebase_auth: ^4.16.0
   firebase_ui_auth: ^1.13.0
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.20.0
 
 
 
@@ -84,6 +84,7 @@ flutter:
     - assets/Logo_Patas.png
     - assets/essa.png
     - assets/logoPow.png
+    - assets/jujubo.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -4,7 +4,7 @@ import '../NubankScreen.dart';
 
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  const DetailPage({super.key});
 
 
   @override
@@ -17,8 +17,8 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff79B2E9),
-        title: Center(
+        backgroundColor: const Color(0xff79B2E9),
+        title: const Center(
           child: Text(
             'Perfil',
             style: TextStyle(
@@ -29,19 +29,19 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
       ),
-      backgroundColor: Color(0xff79B2E9),
+      backgroundColor: const Color(0xff79B2E9),
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
 
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpd4mJRIUwqgE8D_Z2znANEbtiz4GhI4M8NQ&s'),
                   radius: 80,
@@ -49,25 +49,25 @@ class _DetailPageState extends State<DetailPage> {
 
                 ),
                 //texto
-                SizedBox(height: 9),
-                Text(
+                const SizedBox(height: 9),
+                const Text(
                   'Dados pessoais',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 45),
+                const SizedBox(height: 45),
 
 
                 Container(
                   height: 43,
                   width: 300,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         offset: Offset(2, 6), //borda
@@ -75,7 +75,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
@@ -102,7 +102,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -110,18 +110,18 @@ class _DetailPageState extends State<DetailPage> {
                 Container(
                   height: 45,
                   width: 300,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                       color: Colors.white70,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           offset: Offset(2, 6),
                           blurRadius: 20,
                         ),
                       ]),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
@@ -142,7 +142,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -151,11 +151,11 @@ class _DetailPageState extends State<DetailPage> {
                 Container(
                   width: 300,
                   height: 45,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         offset: Offset(2, 6),
@@ -163,7 +163,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
@@ -188,10 +188,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
 
-                Text(
+                const Text(
                   'Seu genero',
                   style: TextStyle(
                     color: Colors.white,
@@ -200,7 +200,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
 
 
@@ -209,39 +209,39 @@ class _DetailPageState extends State<DetailPage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                        WidgetStateProperty.all<Color>(Colors.white),
+                        fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
                       child: Text(
                         'feminino',
                         style: TextStyle(fontSize: 20),
                       ),
+                    ),
+
+
+                    const SizedBox(width: 10),                    ElevatedButton(
+                      onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                        fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                        shape: MaterialStateProperty.all(
+                        WidgetStateProperty.all<Color>(Colors.white),
+                        fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
-                    ),
-
-
-                    SizedBox(width: 10),                    ElevatedButton(
-                      onPressed: () {},
                       child: Text(
                         'masculino',
                         style: TextStyle(
                           fontSize: 20,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                        fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
                         ),
                       ),
                     ),
@@ -249,10 +249,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -266,10 +266,10 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -286,12 +286,12 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
 
 
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -309,46 +309,46 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                        WidgetStateProperty.all<Color>(Colors.white),
+                        fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
                       child: Text(
                         'Sim',
                         style: TextStyle(fontSize: 20),
                       ),
+                    ),
+
+
+                    const SizedBox(width: 20),
+                    ElevatedButton(
+                      onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                        fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                        shape: MaterialStateProperty.all(
+                        WidgetStateProperty.all<Color>(Colors.white),
+                        fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
-                    ),
-
-
-                    SizedBox(width: 20),
-                    ElevatedButton(
-                      onPressed: () {},
                       child: Text(
                         'Não',
                         style: TextStyle(
                           fontSize: 20,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                        fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
                         ),
                       ),
                     ),
@@ -356,10 +356,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
 
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -377,14 +377,14 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 botoes('Casa', 'Apartamento'),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
 
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -401,16 +401,16 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 botoes('Sim', 'Não'),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -424,43 +424,43 @@ class _DetailPageState extends State<DetailPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 botoes('Pequeno', 'Médio'),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
 
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     ElevatedButton(
                       onPressed: () {},
+                      style: ButtonStyle(
+                          backgroundColor:
+                          WidgetStateProperty.all<Color>(Colors.white),
+                          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                          shape: WidgetStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)))),
                       child: Text(
                         'Grande',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                          fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)))),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
 
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -476,7 +476,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
@@ -484,11 +484,11 @@ class _DetailPageState extends State<DetailPage> {
                 Container(
                   height: 43,
                   width: 300,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         offset: Offset(2, 6),
@@ -496,7 +496,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  child: Flexible(
+                  child: const Flexible(
                     child: TextField(
                       style: TextStyle(
                         color: Colors.blue,
@@ -513,10 +513,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -532,7 +532,7 @@ class _DetailPageState extends State<DetailPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
@@ -540,11 +540,11 @@ class _DetailPageState extends State<DetailPage> {
                 Container(
                   height: 45,
                   width: 300,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         offset: Offset(2, 6),
@@ -552,7 +552,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
@@ -575,12 +575,12 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
 
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 25,
@@ -596,7 +596,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -604,11 +604,11 @@ class _DetailPageState extends State<DetailPage> {
                 Container(
                   height: 150,
                   width: 300,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         offset: Offset(2, 6),
@@ -616,7 +616,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
@@ -638,7 +638,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
 
@@ -647,7 +647,7 @@ class _DetailPageState extends State<DetailPage> {
                 botComCor(Colors.red, Colors.green, "Voltar", "Continuar"),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
               ],
@@ -662,11 +662,17 @@ class _DetailPageState extends State<DetailPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         ElevatedButton(
           onPressed: () {},
+          style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all<Color>(c1),
+              fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+              shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)))),
           child: Text(
             text1,
             style: TextStyle(
@@ -674,14 +680,8 @@ class _DetailPageState extends State<DetailPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.white),
           ),
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(c1),
-              fixedSize: MaterialStateProperty.all(Size(150, 50)),
-              shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)))),
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         ElevatedButton(
           onPressed: () {
 
@@ -693,6 +693,12 @@ class _DetailPageState extends State<DetailPage> {
               }),
             );
           },
+          style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all<Color>(c2),
+              fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+              shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)))),
           child: Text(
             txt2,
             style: TextStyle(
@@ -700,12 +706,6 @@ class _DetailPageState extends State<DetailPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.white),
           ),
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(c2),
-              fixedSize: MaterialStateProperty.all(Size(150, 50)),
-              shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)))),
         ),
       ],
     );
@@ -720,39 +720,39 @@ Widget botoes(String nome1, String nome2) {
     children: [
       ElevatedButton(
         onPressed: () {},
-        child: Text(
-          nome1,
-          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-        ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          fixedSize: MaterialStateProperty.all(Size(150, 50)),
-          shape: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
           ),
         ),
+        child: Text(
+          nome1,
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        ),
       ),
 
 
-      SizedBox(width: 20), //
+      const SizedBox(width: 20), //
       ElevatedButton(
         onPressed: () {},
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
         child: Text(
           nome2,
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          fixedSize: MaterialStateProperty.all(Size(150, 50)),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
           ),
         ),
       ),

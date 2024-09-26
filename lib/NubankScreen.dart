@@ -1,15 +1,17 @@
 import 'dart:async';
+import 'package:agora/servico/deslogarCouts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-
 class NubankScreen extends StatefulWidget {
+  const NubankScreen({super.key});
+
   @override
   _NubankScreenState createState() => _NubankScreenState();
 }
 
 class _NubankScreenState extends State<NubankScreen> {
+
   final PageController _pageController = PageController();
   int _currentPage = 0;
   Timer? _timer;
@@ -26,7 +28,7 @@ class _NubankScreenState extends State<NubankScreen> {
   }
 
   void _startAutoScroll() {
-    _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       if (_currentPage < images.length - 1) {
         _currentPage++;
       } else {
@@ -35,7 +37,7 @@ class _NubankScreenState extends State<NubankScreen> {
 
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
     });
@@ -53,35 +55,48 @@ class _NubankScreenState extends State<NubankScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Color(0xFF06143B),
-          leading: Padding(
+          backgroundColor: const Color(0xFF06143B),
+
+          /* leading: Padding(
             padding: const EdgeInsets.all(8),
             child: CircleAvatar(
               radius: 50,
               backgroundColor: Colors.white.withOpacity(0.1),
               child: Icon(Icons.add_a_photo, color: Colors.white),
             ),
-          ),
-          actions: [
+          ),*/
+          actions: const [
             Icon(Icons.help_outline, color: Colors.white),
             SizedBox(width: 20),
             Icon(Icons.person_outline, color: Colors.white),
             SizedBox(width: 20),
           ],
         ),
+        drawer: Drawer(
+          width: 200,
+          backgroundColor: Colors.white,
 
-
+          child: ListView(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.login_outlined, color: Colors.red,),
+                title: const Text("Login-out", style: TextStyle(color: Colors.red),),
+                onTap: offUser().deslogar,
+              )
+            ],
+          ),
+        ),
         body: ListView(
           children: [
             Container(
-              color: Color(0xFF06143B),
+              color: const Color(0xFF06143B),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Olá, Katia',
                       style: TextStyle(
                         color: Colors.white,
@@ -89,7 +104,7 @@ class _NubankScreenState extends State<NubankScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     InkWell(
                       onTap: () {
                         print("Row clicado");
@@ -99,7 +114,7 @@ class _NubankScreenState extends State<NubankScreen> {
                         children: [
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            child: const Text(
                               'Conta',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -108,12 +123,12 @@ class _NubankScreenState extends State<NubankScreen> {
                               ),
                             ),
                           ),
-                          Icon(Icons.arrow_forward_ios, size: 16,
-                              color: Colors.white),
+                          const Icon(Icons.arrow_forward_ios,
+                              size: 16, color: Colors.white),
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -126,15 +141,14 @@ class _NubankScreenState extends State<NubankScreen> {
                               'Pets Cadastrados', Icons.pets, Colors.white),
                           buildIconButton('Ajude-nos', Icons.volunteer_activism,
                               Colors.white),
-                          buildIconButton(
-                              'Denuncie', Icons.phone_android_outlined,
-                              Colors.white),
+                          buildIconButton('Denuncie',
+                              Icons.phone_android_outlined, Colors.white),
                           buildIconButton(
                               'Se divirta', Icons.gamepad, Colors.white),
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     buildCardButton(
                         FontAwesomeIcons.dog, 'Meus Pets cadastrados'),
                   ],
@@ -142,15 +156,15 @@ class _NubankScreenState extends State<NubankScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 15.0, horizontal: 20),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.purple[50],
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -166,9 +180,9 @@ class _NubankScreenState extends State<NubankScreen> {
                 ),
               ),
             ),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            const Divider(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -187,13 +201,11 @@ class _NubankScreenState extends State<NubankScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () =>
-                      _pageController.previousPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeIn),
-                  icon: Icon(Icons.arrow_back_ios, size: 16),
+                  onPressed: () => _pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn),
+                  icon: const Icon(Icons.arrow_back_ios, size: 16),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 12.0, vertical: 25),
@@ -213,17 +225,15 @@ class _NubankScreenState extends State<NubankScreen> {
                     ),
                   ),
                 ),
-
                 IconButton(
-                  onPressed: () =>
-                      _pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeIn),
-                  icon: Icon(Icons.arrow_forward_ios, size: 16),
+                  onPressed: () => _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn),
+                  icon: const Icon(Icons.arrow_forward_ios, size: 16),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
@@ -236,10 +246,7 @@ class _NubankScreenState extends State<NubankScreen> {
               ),
             ),
           ],
-        )
-
-
-    );
+        ));
   }
 
   Widget _buildIndicator() {
@@ -247,8 +254,8 @@ class _NubankScreenState extends State<NubankScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(images.length, (index) {
         return AnimatedContainer(
-          duration: Duration(milliseconds: 500),
-          margin: EdgeInsets.symmetric(horizontal: 4),
+          duration: const Duration(milliseconds: 500),
+          margin: const EdgeInsets.symmetric(horizontal: 4),
           width: _currentPage == index ? 12 : 8,
           height: _currentPage == index ? 12 : 8,
           decoration: BoxDecoration(
@@ -270,17 +277,15 @@ class _NubankScreenState extends State<NubankScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Stack(
-
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.grey[200],
                   radius: 30,
                   child: Icon(icon, color: Colors.pinkAccent, size: 30),
                 ),
-
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               text,
               style: TextStyle(fontSize: 13, color: cor),
@@ -293,7 +298,7 @@ class _NubankScreenState extends State<NubankScreen> {
 
   Widget buildCardButton(IconData icon, String text) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
@@ -301,7 +306,7 @@ class _NubankScreenState extends State<NubankScreen> {
       child: Row(
         children: [
           Icon(icon, color: Colors.black),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(text),
         ],
       ),
@@ -316,10 +321,10 @@ class _NubankScreenState extends State<NubankScreen> {
           backgroundColor: Colors.purple[50],
           child: Icon(icon, color: Colors.purple),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           text,
-          style: TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 12),
         ),
       ],
     );

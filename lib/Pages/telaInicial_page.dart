@@ -34,6 +34,7 @@ class _telaInicialState extends State<telaInicial> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue,
@@ -42,12 +43,12 @@ class _telaInicialState extends State<telaInicial> {
           children: [
             texto("Adoção", "Fazer o bem Espalhar o amor", Colors.white, 23),
             texto(
-                "pets", " Pomerânia " + "  Bulldog Francês.", Colors.white, 25),
+                "pets", " Pomerânia " "  Bulldog Francês.", Colors.white, 25),
             texto("Cuidados", "Amor Carinho Compaixão", Colors.white, 25),
             texto("Amor", "Cuide Bem do seu Pete ", Colors.white, 25),
             texto("Carinho", "Seu companheiro mais fiel ", Colors.white, 25),
             texto("Doação para os Caos", "Aj", Colors.grey.shade100, 23),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             texto("Sempre há uma forma para\nvocê fazer o bem no\nPatas Unidas",
@@ -92,12 +93,12 @@ Widget texto(String text, String text2, Color col, double s) {
 
 Widget bz(Function pressionado, Color cor, String txt, Color corTxt) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 36, horizontal: 25),
+    padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 25),
     child: ElevatedButton(
       onPressed: () => pressionado(),
       style: ElevatedButton.styleFrom(
         backgroundColor: cor,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(4),
             bottomLeft: Radius.circular(4),

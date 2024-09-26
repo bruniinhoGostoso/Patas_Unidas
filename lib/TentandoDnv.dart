@@ -1,26 +1,24 @@
+import 'package:agora/petss/pet_card.dart';
+import 'package:agora/petss/pet_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'pet.dart';
-import 'pet_controller.dart';
-import 'pet_card.dart';
 
-class TelaAdocao extends StatefulWidget {
+import 'Pages/Pets.dart';
+
+class Tentandodnv extends StatefulWidget {
+  const Tentandodnv({super.key});
+
   @override
-  _TelaAdocaoState createState() => _TelaAdocaoState();
+  State<Tentandodnv> createState() => _TentandodnvState();
 }
 
-class _TelaAdocaoState extends State<TelaAdocao> {
-  late PetController _petController;
-  late List<Pet> _pets;
-
-  @override
-  void initState() {
-    super.initState();
-    _petController = PetController();
-    _pets = _petController.getPets(); // Inicializa a lista de pets
-  }
+class _TentandodnvState extends State<Tentandodnv> {
+  final PetController petController = PetController();
 
   @override
   Widget build(BuildContext context) {
+    //List<Pet> pets = petController.getPets(); // Obtendo os pets do controlador
+
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
       appBar: AppBar(
@@ -37,18 +35,17 @@ class _TelaAdocaoState extends State<TelaAdocao> {
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
-          // Usando GridView.builder para gerar dinamicamente os cards dos pets
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(16.0),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,  // Exibe 2 pets por linha
+                crossAxisCount: 2,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
-              itemCount: _pets.length, // Número de pets a ser exibido (baseado na lista)
+              itemCount: petController.InfoPet.length,
               itemBuilder: (context, index) {
-                return PetCard(pet: _pets[index]); // Criando um PetCard para cada pet da lista
+                return PetCard(pet: petController.InfoPet[index]); // Exibindo o card do pet
               },
             ),
           ),
@@ -81,13 +78,6 @@ class _TelaAdocaoState extends State<TelaAdocao> {
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.lightBlue[200],
       ),
-    );
-  }
-
-  // Método que você pode usar futuramente para atualizar a lista de pets
-  void atualizarListaDePets() {
-    setState(() {
-      _pets = _petController.getPets(); // Atualiza a lista de pets
-    });
+    );;
   }
 }

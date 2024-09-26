@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class autenticacaoLogin {
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   loginuser({required String email, required String senha}) async {
     try {
       // Tenta fazer o login com Firebase
@@ -25,6 +27,17 @@ class autenticacaoLogin {
       // Lida com outros erros
       print('Erro desconhecido: $e');
       throw Exception('Erro desconhecido.');
+    }
+  }
+
+  Future<String?> logarUsuarios(
+      {required String email, required String senha}) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: senha);
+      return null;
+    } on FirebaseException catch (e) {
+      return e.message;
     }
   }
 }

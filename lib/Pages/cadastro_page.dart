@@ -208,31 +208,31 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
 
   void botaoClicado() async {
     if (_formkey.currentState!.validate()) {
-        try {
-          await _servico.cadastrarUsuario(
-            nome: _nomeControler.text,
-            email: _emailControler.text,
-            senha: _senhalControler.text,
-          );
+      try {
+        await _servico.cadastrarUsuario(
+          nome: _nomeControler.text,
+          email: _emailControler.text,
+          senha: _senhalControler.text,
+        );
 
-          // Mostrar mensagem de sucesso
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Cadastro realizado com sucesso!")),
-          );
+        // Mostrar mensagem de sucesso
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Cadastro realizado com sucesso!")),
+        );
 
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return DetailPage() ; // Substitua 'ProximaTela' pela sua tela de destino
-            }),
-          );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return DetailPage() ; // Substitua 'ProximaTela' pela sua tela de destino
+          }),
+        );
 
-        } catch (e) {
-          // Mostrar mensagem de erro
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Erro ao cadastrar: $e")),
-          );
-        }
+      } catch (e) {
+        // Mostrar mensagem de erro
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Erro ao cadastrar: $e")),
+        );
+      }
 
     } else {
       print("Formulário inválido");

@@ -18,11 +18,11 @@ class TelaLogin extends StatefulWidget {
 class _TelaLoginState extends State<TelaLogin> {
   final _formkey = GlobalKey<FormState>();
 
-  TextEditingController _emailControler = TextEditingController();
-  TextEditingController _senhalControler = TextEditingController();
+  final TextEditingController _emailControler = TextEditingController();
+  final TextEditingController _senhalControler = TextEditingController();
   bool _isChecked = false;
-  bool _senhaEmailOk = false;
-  autenticacaoLogin _servico = autenticacaoLogin();
+  final bool _senhaEmailOk = false;
+  final autenticacaoLogin _servico = autenticacaoLogin();
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +35,14 @@ class _TelaLoginState extends State<TelaLogin> {
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 100),
+                    const SizedBox(height: 100),
                     Text(
                       "Entrar",
                       style: GoogleFonts.bungee(
                         fontSize: 50,
                       ),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     Form(
                       key: _formkey,
                       child: Column(
@@ -64,7 +64,7 @@ class _TelaLoginState extends State<TelaLogin> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
                             controller: _senhalControler,
                             decoration: getAuthenticationInputDecoration(
@@ -90,7 +90,7 @@ class _TelaLoginState extends State<TelaLogin> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Checkbox(
-                            side: BorderSide(width: 1),
+                            side: const BorderSide(width: 1),
                             activeColor: Colors.blue,
                             value: _isChecked,
                             onChanged: (bool? value) {
@@ -99,28 +99,28 @@ class _TelaLoginState extends State<TelaLogin> {
                               });
                             },
                           ),
-                          Text(
+                          const Text(
                             "Manter Conectado",
                             style: TextStyle(fontSize: 12),
                           ),
-                          SizedBox(width: 15),
-                          Text(
+                          const SizedBox(width: 15),
+                          const Text(
                             "Esqueci a senha",
                             style: TextStyle(fontSize: 12),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        side: BorderSide(color: Colors.blue, width: 1),
+                        side: const BorderSide(color: Colors.blue, width: 1),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: botaoClicado,
-                      child: Padding(
+                      onPressed: () => novaVerifc(),
+                      child: const Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: 6.0, horizontal: 70.0),
                         child: Text(
@@ -133,14 +133,14 @@ class _TelaLoginState extends State<TelaLogin> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 28),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 28),
                       child: Text("Ou"),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 25,
                           backgroundColor: Colors.white,
                           child: Icon(
@@ -149,7 +149,7 @@ class _TelaLoginState extends State<TelaLogin> {
                             size: 50,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         CircleAvatar(
                           radius: 40,
                           backgroundColor: Colors.transparent,
@@ -161,8 +161,8 @@ class _TelaLoginState extends State<TelaLogin> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
-                    Text("Não possui conta?"),
+                    const SizedBox(height: 32),
+                    const Text("Não possui conta?"),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -172,7 +172,7 @@ class _TelaLoginState extends State<TelaLogin> {
                           }),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "CADASTRA-SE AGORA!",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -181,7 +181,7 @@ class _TelaLoginState extends State<TelaLogin> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                   ],
                 ),
               ),
@@ -192,49 +192,53 @@ class _TelaLoginState extends State<TelaLogin> {
     );
   }
 
-  void navegarTelaMenu() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) {
-        return  NubankScreen();
-      }),
-    );
-  }
 
-  void botaoClicado() async {
+
+  void novaVerifc() async{
     if (_formkey.currentState!.validate()) {
-      try {
-        // Imprimir os valores dos campos para debugar
-        print("Email: ${_emailControler.text}");
-        print("Senha: ${_senhalControler.text}");
+      print(_emailControler);
+      print(_senhalControler);
 
-        // Tenta fazer o login
-        await _servico.loginuser(
-            email: _emailControler.text, senha: _senhalControler.text);
+      _servico
+          .logarUsuarios(
+              email: _emailControler.text, senha: _senhalControler.text)
+          .then((String? erro) {
+        if (erro != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(erro)),
+          );
+        }else{
 
-        // Se o login for bem-sucedido, navega para a próxima tela
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) {
-            return  NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
-          }),
-        );
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
+            }),
+          );
+        }
+      },);
+    }else{
 
-        // Mostrar mensagem de sucesso
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Login efetuado com sucesso!")),
-        );
-      } catch (e) {
-        // Mostrar mensagem de erro com detalhes
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Erro ao realizar login: ${e.toString()}")),
-        );
-      }
-    } else {
-      print("Formulário inválido");
+      print("ERRO");
+
     }
   }
 
+
+  void tentando() async{
+
+    try {
+      await _servico.logarUsuarios(email: _emailControler.text, senha: _senhalControler.text);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NubankScreen()),
+      
+      );
+      print("Usuario verificado!");
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Erro: $e")));
+    }
+  }
+
+ 
 }
 
 InputDecoration getAuthenticationInputDecoration(String label,
