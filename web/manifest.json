@@ -1,6 +1,6 @@
 {
-    "name": "agora",
-    "short_name": "agora",
+    "name": "testau",
+    "short_name": "testau",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
