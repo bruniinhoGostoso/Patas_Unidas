@@ -11,7 +11,6 @@ class NubankScreen extends StatefulWidget {
 }
 
 class _NubankScreenState extends State<NubankScreen> {
-
   final PageController _pageController = PageController();
   int _currentPage = 0;
   Timer? _timer;
@@ -75,12 +74,17 @@ class _NubankScreenState extends State<NubankScreen> {
         drawer: Drawer(
           width: 200,
           backgroundColor: Colors.white,
-
           child: ListView(
             children: [
               ListTile(
-                leading: const Icon(Icons.login_outlined, color: Colors.red,),
-                title: const Text("Login-out", style: TextStyle(color: Colors.red),),
+                leading: const Icon(
+                  Icons.login_outlined,
+                  color: Colors.red,
+                ),
+                title: const Text(
+                  "Login-out",
+                  style: TextStyle(color: Colors.red),
+                ),
                 onTap: offUser().deslogar,
               )
             ],

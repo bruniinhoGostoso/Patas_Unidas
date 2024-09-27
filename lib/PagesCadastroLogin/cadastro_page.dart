@@ -1,5 +1,5 @@
 import 'package:agora/NubankScreen.dart';
-import 'package:agora/Pages/Login_Page.dart';
+import 'package:agora/PagesCadastroLogin/Login_Page.dart';
 import 'package:agora/Pages/Profile.dart';
 import 'package:agora/servico/autenticacao.dart';
 import 'package:flutter/material.dart';

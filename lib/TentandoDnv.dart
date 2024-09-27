@@ -72,11 +72,13 @@ class _TentandodnvState extends State<Tentandodnv> {
           BottomNavigationBarItem(
             icon: Icon(Icons.report),
             label: 'Denúncia',
+
           ),
         ],
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.lightBlue[200],
+        // selectedFontSize: 10,
       ),
     );;
   }
