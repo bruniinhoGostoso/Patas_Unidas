@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class autenticacaoLogin {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  late final User user;
 
   loginuser({required String email, required String senha}) async {
     try {

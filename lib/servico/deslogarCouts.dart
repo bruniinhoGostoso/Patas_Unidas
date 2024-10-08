@@ -2,8 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class offUser {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    bool _autenticationUser = true;
+
+  // Getter para _autenticationUser
+  bool get autenticacaoUsuario => _autenticationUser;
+
 
   Future<void> deslogar() async {
     return _firebaseAuth.signOut();
   }
+
+  void alterarAutenticacao() {
+    _autenticationUser = !_autenticationUser;
+  }
+
 }

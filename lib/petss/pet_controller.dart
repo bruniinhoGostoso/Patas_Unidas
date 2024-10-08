@@ -1,7 +1,7 @@
 import 'pet.dart';
 
 class PetController {
-  // Aqui você pode simular a busca no banco de dados
+
   List InfoPet =
     [
       Pet(nome: 'Lucio', idade: '7 meses', sexo: 'macho', imagem: 'assets/jujubo.jpg'),

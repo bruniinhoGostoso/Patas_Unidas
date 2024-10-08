@@ -223,7 +223,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) {
-            return DetailPage() ; // Substitua 'ProximaTela' pela sua tela de destino
+            return Profille() ; // Substitua 'ProximaTela' pela sua tela de destino
           }),
         );
 

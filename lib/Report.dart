@@ -30,16 +30,15 @@ class _ReportState extends State<Report> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color(0xff2C5E89),
-        title: Center(
-          child: Text(
-            'Denuncie',
-            style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 30,
-                color: Colors.white,
-                fontFamily: "Roboto"),
-          ),
+        title: Text(
+          'Denuncie',
+          style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 30,
+              color: Colors.white,
+              fontFamily: "Roboto"),
         ),
       ),
       backgroundColor: Colors.white,

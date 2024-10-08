@@ -23,23 +23,18 @@ void main() async {
   );
 }
 
-class RoteadorTela extends StatefulWidget {
+class RoteadorTela extends StatelessWidget {
   const RoteadorTela({super.key});
 
-  @override
-  State<RoteadorTela> createState() => _RoteadorTelaState();
-}
-
-class _RoteadorTelaState extends State<RoteadorTela> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.userChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return NubankScreen();
+          return NubankScreen(/*user: snapshot.data!,*/);
         } else {
-          return telaInicial();
+          return const telaInicial();
         }
       },
     );

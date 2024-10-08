@@ -22,6 +22,7 @@ class _TentandodnvState extends State<Tentandodnv> {
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Adote seu pet'),
         backgroundColor: Colors.lightBlue,
       ),

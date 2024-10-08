@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:agora/servico/deslogarCouts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NubankScreen extends StatefulWidget {
-  const NubankScreen({super.key});
+  //final User user;
+
+  const NubankScreen({super.key/*, required this.user*/});
 
   @override
   _NubankScreenState createState() => _NubankScreenState();
@@ -76,6 +79,15 @@ class _NubankScreenState extends State<NubankScreen> {
           backgroundColor: Colors.white,
           child: ListView(
             children: [
+
+             /* UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage('https://i.pinimg.com/736x/22/bf/db/22bfdb9c0f9b4efb772bb5d8ef16be03.jpg'),),
+
+                  accountName: Text((widget.user.displayName != null)
+                      ? widget.user.displayName!
+                      : ""),
+                  accountEmail: Text(widget.user.email!)),*/
               ListTile(
                 leading: const Icon(
                   Icons.login_outlined,
@@ -237,7 +249,6 @@ class _NubankScreenState extends State<NubankScreen> {
                 ),
               ],
             ),
-            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
