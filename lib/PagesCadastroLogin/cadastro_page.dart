@@ -1,12 +1,12 @@
-import 'package:agora/NubankScreen.dart';
-import 'package:agora/PagesCadastroLogin/Login_Page.dart';
-import 'package:agora/Pages/Profile.dart';
-import 'package:agora/servico/autenticacao.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:patas/Pages/Profile.dart';
+import 'package:patas/PagesCadastroLogin/Login_Page.dart';
+import 'package:patas/servico/autenticacao.dart';
 
 class novaTelaEntrar extends StatefulWidget {
   const novaTelaEntrar({super.key});

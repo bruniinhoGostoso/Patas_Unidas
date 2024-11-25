@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:agora/servico/deslogarCouts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:patas/servico/deslogarCouts.dart';
 
 class NubankScreen extends StatefulWidget {
   const NubankScreen({super.key});

@@ -1,7 +1,8 @@
-import 'package:agora/petss/pet_card.dart';
-import 'package:agora/petss/pet_controller.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:patas/petss/pet_card.dart';
+import 'package:patas/petss/pet_controller.dart';
 
 import 'Pages/Pets.dart';
 

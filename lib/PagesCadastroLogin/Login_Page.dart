@@ -1,12 +1,11 @@
-import 'package:agora/NubankScreen.dart';
-import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
-import 'package:agora/servico/autenticacaoLogin.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
-
-import '../servico/autenticacao.dart';
+import 'package:patas/NubankScreen.dart';
+import 'package:patas/PagesCadastroLogin/cadastro_page.dart';
+import 'package:patas/servico/autenticacaoLogin.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
