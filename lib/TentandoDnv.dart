@@ -17,7 +17,7 @@ class _TentandodnvState extends State<Tentandodnv> {
 
   @override
   Widget build(BuildContext context) {
-    //List<Pet> pets = petController.getPets(); // Obtendo os pets do controlador
+    //List<Pet> pets = petController.getPets();
 
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
@@ -36,9 +36,10 @@ class _TentandodnvState extends State<Tentandodnv> {
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
+          //SizedBox(height: 20,),
           Expanded(
             child: GridView.builder(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(14.0),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
@@ -46,10 +47,12 @@ class _TentandodnvState extends State<Tentandodnv> {
               ),
               itemCount: petController.InfoPet.length,
               itemBuilder: (context, index) {
-                return PetCard(pet: petController.InfoPet[index]); // Exibindo o card do pet
+                return PetCard(pet: petController.InfoPet[index]);
               },
             ),
           ),
+
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -81,6 +84,6 @@ class _TentandodnvState extends State<Tentandodnv> {
         backgroundColor: Colors.lightBlue[200],
         // selectedFontSize: 10,
       ),
-    );;
+    );
   }
 }

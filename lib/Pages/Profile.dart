@@ -10,6 +10,7 @@ class Profille extends StatefulWidget {
 
 class _ProfilleState extends State<Profille> {
   @override
+TextEditingController  nomeP = TextEditingController();
 
 
   Widget build(BuildContext context) {

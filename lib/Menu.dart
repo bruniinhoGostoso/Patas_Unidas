@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:agora/Pages/Profile.dart';
+import 'package:agora/TentandoDnv.dart';
 import 'package:agora/servico/deslogarCouts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,7 @@ class NubankScreen extends StatefulWidget {
 class _NubankScreenState extends State<NubankScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  Timer? _timer;
+
 
   final List<String> images = [
     'https://via.placeholder.com/400x200.png?text=Imagem+1',
@@ -29,7 +31,7 @@ class _NubankScreenState extends State<NubankScreen> {
     super.initState();
   }
 
-  void _startAutoScroll() {
+  /*void _startAutoScroll() {
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       if (_currentPage < images.length - 1) {
         _currentPage++;
@@ -43,14 +45,14 @@ class _NubankScreenState extends State<NubankScreen> {
         curve: Curves.easeIn,
       );
     });
-  }
-
+  }*/
+/*
   @override
   void dispose() {
     _timer?.cancel();
     _pageController.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _NubankScreenState extends State<NubankScreen> {
             padding: const EdgeInsets.all(8),
             child: CircleAvatar(
               radius: 50,
-              backgroundColor: Colors.white.withOpacity(0.1),
+       1       backgroundColor: Colors.white.withOpacity(0.1),
               child: Icon(Icons.add_a_photo, color: Colors.white),
             ),
           ),*/
@@ -94,10 +96,12 @@ class _NubankScreenState extends State<NubankScreen> {
                   color: Colors.red,
                 ),
                 title: const Text(
-                  "Login-out",
+                  "Exit",
                   style: TextStyle(color: Colors.red),
                 ),
-                onTap: offUser().deslogar,
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
+                },
               )
             ],
           ),
@@ -129,9 +133,18 @@ class _NubankScreenState extends State<NubankScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Conta',
+                            onPressed: () {
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return const Profille();
+                                }),
+                              );
+
+                            },
+                            child:  Text(
+                              'Minha Conta',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -139,7 +152,7 @@ class _NubankScreenState extends State<NubankScreen> {
                               ),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios,
+                           Icon(Icons.arrow_forward_ios,
                               size: 16, color: Colors.white),
                         ],
                       ),
@@ -149,8 +162,19 @@ class _NubankScreenState extends State<NubankScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          buildIconButton(
-                              'Quero Adotar', Icons.favorite, Colors.white),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return const Tentandodnv();
+                                }),
+                              );
+                            },
+                            child: buildIconButton(
+                                'Quero Adotar', Icons.favorite, Colors.white),
+                          ),
+
                           buildIconButton('Cadastrar Pet', FontAwesomeIcons.dog,
                               Colors.white),
                           buildIconButton(
@@ -186,7 +210,7 @@ class _NubankScreenState extends State<NubankScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Pix no Crédito: faça pagamentos sem usar o saldo da conta.',
+                          '',
                           style: TextStyle(fontSize: 14),
                         ),
                       ),
@@ -312,18 +336,20 @@ class _NubankScreenState extends State<NubankScreen> {
   }
 
   Widget buildCardButton(IconData icon, String text) {
-    return Container(
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.black),
-          const SizedBox(width: 10),
-          Text(text),
-        ],
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: Colors.black),
+            const SizedBox(width: 10),
+            Text(text),
+          ],
+        ),
       ),
     );
   }

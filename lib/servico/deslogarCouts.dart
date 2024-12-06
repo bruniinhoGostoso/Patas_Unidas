@@ -9,7 +9,7 @@ class offUser {
 
 
   Future<void> deslogar() async {
-    return _firebaseAuth.signOut();
+    return await _firebaseAuth.signOut();
   }
 
   void alterarAutenticacao() {

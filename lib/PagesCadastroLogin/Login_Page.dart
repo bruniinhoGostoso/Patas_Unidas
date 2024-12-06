@@ -1,4 +1,4 @@
-import 'package:agora/NubankScreen.dart';
+import 'package:agora/Menu.dart';
 import 'package:agora/Pages/Profile.dart';
 import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
 import 'package:agora/servico/autenticacaoLogin.dart';
@@ -10,7 +10,6 @@ import 'package:ionicons/ionicons.dart';
 import '../servico/autenticacao.dart';
 
 class TelaLogin extends StatefulWidget {
-
   const TelaLogin({super.key});
 
   @override
@@ -23,6 +22,7 @@ class _TelaLoginState extends State<TelaLogin> {
   final TextEditingController _emailControler = TextEditingController();
   final TextEditingController _senhalControler = TextEditingController();
   bool _isChecked = false;
+  bool _isVisible = false;
   final bool _senhaEmailOk = false;
   final autenticacaoLogin _servico = autenticacaoLogin();
 
@@ -72,16 +72,29 @@ class _TelaLoginState extends State<TelaLogin> {
                             decoration: getAuthenticationInputDecoration(
                               "Senha",
                               icon: Icons.lock,
+                            ).copyWith(
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _isVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,color: Colors.blue,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isVisible = !_isVisible;
+                                  });
+                                },
+                              ),
                             ),
                             validator: (String? value) {
                               if (value == null) {
                                 return "A senha não pode ser vazia!";
-                              } else if (value.length < 3) {
+                              } else if (value.length < 5) {
                                 return "A senha precisa ser maior que 3 caracteres!";
                               }
                               return null;
                             },
-                            obscureText: true,
+                            obscureText: !_isVisible,
                           ),
                         ],
                       ),
@@ -194,53 +207,46 @@ class _TelaLoginState extends State<TelaLogin> {
     );
   }
 
-
-
-  void novaVerifc() async{
+  void novaVerifc() async {
     if (_formkey.currentState!.validate()) {
-      print(_emailControler);
-      print(_senhalControler);
-
-      _servico
+      await _servico
           .logarUsuarios(
               email: _emailControler.text, senha: _senhalControler.text)
-          .then((String? erro) {
-        if (erro != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(erro)),
-          );
-        }else{
-
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
-            }),
-          );
-        }
-      },);
-    }else{
-
+          .then(
+        (String? erro) {
+          if (erro != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(erro)),
+            );
+          } else {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
+              }),
+            );
+          }
+        },
+      );
+    } else {
       print("ERRO");
-
     }
   }
 
-
-  void tentando() async{
-
+  void tentando() async {
     try {
-      await _servico.logarUsuarios(email: _emailControler.text, senha: _senhalControler.text);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NubankScreen()),
-      
+      await _servico.logarUsuarios(
+          email: _emailControler.text, senha: _senhalControler.text);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => NubankScreen()),
       );
       print("Usuario verificado!");
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Erro: $e")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Erro: $e")));
     }
   }
-
- 
 }
 
 InputDecoration getAuthenticationInputDecoration(String label,

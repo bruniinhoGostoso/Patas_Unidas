@@ -1,4 +1,4 @@
-import 'package:agora/NubankScreen.dart';
+import 'package:agora/Menu.dart';
 import 'package:agora/PagesCadastroLogin/Login_Page.dart';
 import 'package:agora/Pages/Profile.dart';
 import 'package:agora/servico/autenticacao.dart';
