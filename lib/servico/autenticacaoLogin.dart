@@ -31,6 +31,8 @@ class autenticacaoLogin {
     }
   }
 
+  //
+
   Future<String?> logarUsuarios(
       {required String email, required String senha}) async {
     try {

@@ -8,7 +8,7 @@ class addPessoas {
    FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
    Future<void> adicionarPessoa (dadosPessoa )async{
-await _firestore.collection(userId).doc()
+//await _firestore.collection(userId).doc()
 
    }
 }
