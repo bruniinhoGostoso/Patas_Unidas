@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:patas/petss/pet_card.dart';
 import 'package:patas/petss/pet_controller.dart';
 
-import 'Pages/Pets.dart';
+import 'domain/Pets.dart';
 
 class Tentandodnv extends StatefulWidget {
   const Tentandodnv({super.key});
