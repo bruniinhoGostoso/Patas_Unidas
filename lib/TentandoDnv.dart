@@ -3,7 +3,7 @@ import 'package:agora/petss/pet_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'domain/Pets.dart';
+
 
 class Tentandodnv extends StatefulWidget {
   const Tentandodnv({super.key});

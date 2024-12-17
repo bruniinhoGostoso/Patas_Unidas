@@ -83,7 +83,11 @@ class _NubankScreenState extends State<NubankScreen> {
           child: ListView(
             children: [
 
+
              /* UserAccountsDrawerHeader(
+
+            
+
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage('https://i.pinimg.com/736x/22/bf/db/22bfdb9c0f9b4efb772bb5d8ef16be03.jpg'),),
 
@@ -118,6 +122,7 @@ class _NubankScreenState extends State<NubankScreen> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -157,7 +162,8 @@ class _NubankScreenState extends State<NubankScreen> {
                               ),
                             ),
                           ),
-                           Icon(Icons.arrow_forward_ios,
+
+                          Icon(Icons.arrow_forward_ios,
                               size: 16, color: Colors.white),
                         ],
                       ),
@@ -203,6 +209,7 @@ class _NubankScreenState extends State<NubankScreen> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.purple[50],
@@ -376,3 +383,4 @@ class _NubankScreenState extends State<NubankScreen> {
     );
   }
 }
+
