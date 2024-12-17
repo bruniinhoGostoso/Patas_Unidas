@@ -1,12 +1,14 @@
-import 'package:agora/NubankScreen.dart';
-import 'package:agora/PagesCadastroLogin/Login_Page.dart';
-import 'package:agora/Pages/Profile.dart';
-import 'package:agora/servico/autenticacao.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ionicons/ionicons.dart';
+
+import '../Pages/Profile.dart';
+import '../servico/autenticacao.dart';
+import 'Login_Page.dart';
+
 
 class novaTelaEntrar extends StatefulWidget {
   const novaTelaEntrar({super.key});
@@ -215,7 +217,6 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
           senha: _senhalControler.text,
         );
 
-        // Mostrar mensagem de sucesso
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Cadastro realizado com sucesso!")),
         );
@@ -223,7 +224,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) {
-            return Profille() ; // Substitua 'ProximaTela' pela sua tela de destino
+            return Profille() ;
           }),
         );
 

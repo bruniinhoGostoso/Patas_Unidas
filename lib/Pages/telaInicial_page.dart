@@ -25,14 +25,14 @@ class _telaInicialState extends State<telaInicial> {
     );
   }
 
-  void navegarTelaLogin() {
+/*void navegarTelaLogin() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
-        return const TelaLogin();
+        return LoginForm(); //TelaLogin();
       }),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,8 @@ class _telaInicialState extends State<telaInicial> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                bz(navegarTelaLogin, Colors.white10, "Fazer Login",
-                    Colors.white),
+                // bz(navegarTelaLogin, Colors.white10, "Fazer Login",
+                // Colors.white),
                 bz(navegarTelaCadastro, Colors.white, "Cadastra-se",
                     Colors.black),
               ],

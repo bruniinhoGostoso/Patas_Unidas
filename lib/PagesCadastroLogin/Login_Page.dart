@@ -1,5 +1,4 @@
-import 'package:agora/NubankScreen.dart';
-import 'package:agora/Pages/Profile.dart';
+import 'package:agora/Menu.dart';
 import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
 import 'package:agora/servico/autenticacaoLogin.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import 'package:ionicons/ionicons.dart';
 import '../servico/autenticacao.dart';
 
 class TelaLogin extends StatefulWidget {
-
   const TelaLogin({super.key});
 
   @override
