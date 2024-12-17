@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:agora/Pages/Profile.dart';
+import 'package:agora/Pages/telaInicial_page.dart';
 import 'package:agora/TentandoDnv.dart';
 import 'package:agora/servico/deslogarCouts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -101,6 +102,10 @@ class _NubankScreenState extends State<NubankScreen> {
                 ),
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => telaInicial()),
+                  );
                 },
               )
             ],

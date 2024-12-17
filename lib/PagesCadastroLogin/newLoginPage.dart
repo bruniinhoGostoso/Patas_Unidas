@@ -1,30 +1,87 @@
 import 'package:agora/Menu.dart';
-import 'package:agora/Pages/Profile.dart';
 import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
-import 'package:agora/servico/autenticacaoLogin.dart';
+import 'package:agora/db/sharedPrefs.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../servico/autenticacao.dart';
+import '../servico/autenticacaoLogin.dart';
 
-class TelaLogin extends StatefulWidget {
-  const TelaLogin({super.key});
-
+class LoginForm extends StatefulWidget {
   @override
-  State<TelaLogin> createState() => _TelaLoginState();
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _TelaLoginState extends State<TelaLogin> {
+class _LoginFormState extends State<LoginForm> {
   final _formkey = GlobalKey<FormState>();
-
   final TextEditingController _emailControler = TextEditingController();
   final TextEditingController _senhalControler = TextEditingController();
-  bool _isChecked = false;
-  bool _isVisible = false;
-  final bool _senhaEmailOk = false;
+
+  bool _senhaVisivel = false;
+  bool _manterConectado = false;
   final autenticacaoLogin _servico = autenticacaoLogin();
+
+  @override
+  void initState() {
+    super.initState();
+    _carregarPreferenciaManterConectado();
+  }
+
+  Future<void> _carregarPreferenciaManterConectado() async {
+    SharedPrefs prefs = SharedPrefs();
+    final bool ConectadoOuNao =
+        await prefs.carregarPreferenciaManterConectado();
+
+    setState(() {
+      _manterConectado = ConectadoOuNao;
+    });
+  }
+//
+  Future<void> _salvarPreferenciaManterConectado(bool valor) async {
+    //final prefs = await SharedPreferences.getInstance();
+    SharedPrefs prefs = SharedPrefs();
+    await prefs.setUser(valor);
+    //await prefs.setBool('manterConectado', valor);
+
+//Persistence.SESSION: Apenas mantém a sessão ativa enquanto o aplicativo estiver aberto.
+// Persistence.NONE: Não mantém nenhuma sessão ativa.
+// mantem o usuario logado mesmo depois do app ser fechado: await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+   /* if (valor) {
+      await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+    } else {
+      await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
+    }*/
+  }
+
+  void _fazerLogin() async {
+    if (_formkey.currentState!.validate()) {
+      try {
+        /*await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailControler.text,
+          password: _senhalControler.text,
+        );*/
+        await _servico.logarUsuarios(
+            email: _emailControler.text, senha: _senhalControler.text);
+        // salva a preferencia do usuário
+        await _salvarPreferenciaManterConectado(_manterConectado);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NubankScreen()),
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro ao fazer login: ${e.toString()}')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao fazer login: Referente ao validador')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +113,7 @@ class _TelaLoginState extends State<TelaLogin> {
                               icon: Icons.email,
                             ),
                             validator: (String? value) {
-                              if (value == null) {
+                              if (value == null || value.isEmpty) {
                                 return 'Por favor, insira um e-mail ou número de celular';
                               } else if (value.length < 6) {
                                 return 'Por favor, insira um e-mail ou número de celular válido';
@@ -75,31 +132,48 @@ class _TelaLoginState extends State<TelaLogin> {
                             ).copyWith(
                               suffixIcon: IconButton(
                                 icon: Icon(
-                                  _isVisible
+                                  _senhaVisivel
                                       ? Icons.visibility
-                                      : Icons.visibility_off,color: Colors.blue,
+                                      : Icons.visibility_off,
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
+                                    _senhaVisivel = !_senhaVisivel;
                                   });
                                 },
                               ),
                             ),
                             validator: (String? value) {
-                              if (value == null) {
+                              if (value == null || value.isEmpty) {
                                 return "A senha não pode ser vazia!";
                               } else if (value.length < 5) {
                                 return "A senha precisa ser maior que 3 caracteres!";
                               }
                               return null;
                             },
-                            obscureText: !_isVisible,
+                            obscureText: !_senhaVisivel,
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: _manterConectado,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    _manterConectado = value!;
+                                  });
+                                },
+                              ),
+                              const Text("Manter conectado"),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: _fazerLogin,
+                            child: const Text("Entrar"),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding: const EdgeInsets.symmetric(vertical: 28),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -110,8 +184,9 @@ class _TelaLoginState extends State<TelaLogin> {
                             value: _isChecked,
                             onChanged: (bool? value) {
                               setState(() {
-                                _isChecked = value!;
+                                _isChecked = value ?? false;
                               });
+                              _saveCheckboxValue(_isChecked);
                             },
                           ),
                           const Text(
@@ -147,7 +222,7 @@ class _TelaLoginState extends State<TelaLogin> {
                           ),
                         ),
                       ),
-                    ),
+                    ),*/
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 28),
                       child: Text("Ou"),
@@ -207,61 +282,20 @@ class _TelaLoginState extends State<TelaLogin> {
     );
   }
 
-  void novaVerifc() async {
-    if (_formkey.currentState!.validate()) {
-      await _servico
-          .logarUsuarios(
-              email: _emailControler.text, senha: _senhalControler.text)
-          .then(
-        (String? erro) {
-          if (erro != null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(erro)),
-            );
-          } else {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
-              }),
-            );
-          }
-        },
-      );
-    } else {
-      print("ERRO");
-    }
-  }//
-
-  void tentando() async {
-    try {
-      await _servico.logarUsuarios(
-          email: _emailControler.text, senha: _senhalControler.text);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => NubankScreen()),
-      );
-      print("Usuario verificado!");
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Erro: $e")));
-    }
+  InputDecoration getAuthenticationInputDecoration(String label,
+      {IconData? icon}) {
+    return InputDecoration(
+      hintText: label,
+      fillColor: Colors.white,
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(40),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(40),
+      ),
+      prefixIcon: icon != null ? Icon(icon, color: Colors.blue) : null,
+    );
   }
-}
-
-InputDecoration getAuthenticationInputDecoration(String label,
-    {IconData? icon}) {
-  return InputDecoration(
-    hintText: label,
-    fillColor: Colors.white,
-    filled: true,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(40),
-      borderSide: BorderSide.none,
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(40),
-    ),
-    prefixIcon: icon != null ? Icon(icon, color: Colors.blue) : null,
-  );
 }

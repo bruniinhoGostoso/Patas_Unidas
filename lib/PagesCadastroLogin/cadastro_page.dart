@@ -24,7 +24,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
   TextEditingController _emailControler = TextEditingController();
   TextEditingController _senhalControler = TextEditingController();
   TextEditingController _nomeControler = TextEditingController();
-
+//
   autenticacaoservico _servico = autenticacaoservico();
 
   @override

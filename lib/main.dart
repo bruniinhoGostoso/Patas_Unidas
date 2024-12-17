@@ -1,5 +1,6 @@
 
 import 'package:agora/Menu.dart';
+import 'package:agora/Pages/Roteador_page.dart';
 import 'package:agora/TentandoDnv.dart';
 
 import 'package:agora/Pages/telaInicial_page.dart';
@@ -16,7 +17,7 @@ void main() async {
   );
   runApp(
     const MaterialApp(
-      home: RoteadorTela(),
+      home: RoteadorPage(),
     ),
   );
 }
