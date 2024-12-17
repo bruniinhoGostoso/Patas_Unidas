@@ -27,7 +27,7 @@ class _RoteadorPageState extends State<RoteadorPage> {
         return NubankScreen();
 
       }
-      return telaInicial();//
+      return telaInicial();
 
     });
   }
