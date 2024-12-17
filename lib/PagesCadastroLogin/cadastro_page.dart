@@ -1,3 +1,7 @@
+import 'package:agora/Menu.dart';
+import 'package:agora/PagesCadastroLogin/Login_Page.dart';
+import 'package:agora/Pages/Profile.dart';
+import 'package:agora/servico/autenticacao.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -26,7 +30,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
   TextEditingController _emailControler = TextEditingController();
   TextEditingController _senhalControler = TextEditingController();
   TextEditingController _nomeControler = TextEditingController();
-
+//
   autenticacaoservico _servico = autenticacaoservico();
 
   @override

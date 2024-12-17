@@ -5,4 +5,4 @@ class Pet {
   final String imagem;
 
   Pet({required this.nome, required this.idade, required this.sexo, required this.imagem});
-}
+}//

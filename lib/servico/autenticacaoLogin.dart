@@ -13,7 +13,6 @@ class autenticacaoLogin {
       );
       print("Login feito");
     } on FirebaseAuthException catch (e) {
-      // Captura o erro específico de autenticação do Firebase
       if (e.code == 'user-not-found') {
         print('Usuário não encontrado.');
         throw Exception('Usuário não encontrado.');
@@ -25,11 +24,12 @@ class autenticacaoLogin {
         throw Exception(e.message);
       }
     } catch (e) {
-      // Lida com outros erros
       print('Erro desconhecido: $e');
       throw Exception('Erro desconhecido.');
     }
   }
+
+  //
 
   Future<String?> logarUsuarios(
       {required String email, required String senha}) async {

@@ -5,14 +5,14 @@ class PetController {
   List InfoPet =
     [
       Pet(nome: 'Lucio', idade: '7 meses', sexo: 'macho', imagem: 'assets/jujubo.jpg'),
-      Pet(nome: 'Lolla', idade: '3 aninhos', sexo: 'fêmea', imagem: 'assets/lolla.png'),
-      Pet(nome: 'Tom', idade: '5 anos', sexo: 'macho', imagem: 'assets/tom.png'),
-      Pet(nome: 'Capitão', idade: '3 anos', sexo: 'macho', imagem: 'assets/capitao.png'),
-      Pet(nome: 'Sabino', idade: '5 anos', sexo: 'macho', imagem: 'assets/sabino.png'),
-      Pet(nome: 'Milly', idade: '5 meses', sexo: 'fêmea', imagem: 'assets/milly.png'),
-      Pet(nome: 'Milly', idade: '5 meses', sexo: 'fêmea', imagem: 'assets/milly.png'),
-      Pet(nome: 'Milly', idade: '5 meses', sexo: 'fêmea', imagem: 'assets/milly.png'),
-      Pet(nome: 'Milly', idade: '5 meses', sexo: 'fêmea', imagem: 'assets/milly.png'),
+      Pet(nome: 'Bob', idade: '7 meses', sexo: 'macho', imagem: 'assets/jujubo.jpg'),
+      Pet(nome: 'Luke', idade: '7 meses', sexo: 'macho', imagem: 'assets/jujubo.jpg'),
+      Pet(nome: 'Ketlayne', idade: '7 meses', sexo: 'Femê', imagem: 'assets/jujubo.jpg'),
+      Pet(nome: 'Luna', idade: '3 meses', sexo: 'Femê', imagem: 'assets/jujubo.jpg'),
+      Pet(nome: 'kety', idade: '7 meses', sexo: 'macho', imagem: 'assets/jujubo.jpg'),
+      Pet(nome: 'Lua', idade: '7 meses', sexo: 'Femê', imagem: 'assets/jujubo.jpg'),
+
+
 
     ];
 
