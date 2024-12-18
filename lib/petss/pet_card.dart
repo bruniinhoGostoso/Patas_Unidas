@@ -4,7 +4,7 @@ import 'pet.dart';
 class PetCard extends StatelessWidget {
   final Pet pet;
 
-  const PetCard({required this.pet});
+  const PetCard({super.key, required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class PetCard extends StatelessWidget {
         children: [
           Text(
             pet.nome,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           Expanded(
             child: Padding(

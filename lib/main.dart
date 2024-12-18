@@ -1,11 +1,5 @@
-
-import 'package:agora/Menu.dart';
-import 'package:agora/Pages/Roteador_page.dart';
-import 'package:agora/TentandoDnv.dart';
-
-import 'package:agora/Pages/telaInicial_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:patas/Pages/Roteador_page.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +18,7 @@ void main() async {
   );
 }
 
-class RoteadorTela extends StatelessWidget {
+/*class RoteadorTela extends StatelessWidget {
   const RoteadorTela({super.key});
 
   @override
@@ -40,4 +34,4 @@ class RoteadorTela extends StatelessWidget {
       },
     );
   }
-}
+}*/

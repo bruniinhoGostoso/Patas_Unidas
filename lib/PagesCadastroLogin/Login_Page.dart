@@ -1,13 +1,10 @@
-import 'package:agora/Menu.dart';
-import 'package:agora/Pages/Profile.dart';
-import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
-import 'package:agora/servico/autenticacaoLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:patas/Menu.dart';
+import 'package:patas/PagesCadastroLogin/cadastro_page.dart';
+import 'package:patas/servico/autenticacaoLogin.dart';
 
-import '../servico/autenticacao.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
@@ -222,7 +219,7 @@ class _TelaLoginState extends State<TelaLogin> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) {
-                return NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
+                return const NubankScreen(); // Substitua 'ProximaTela' pela sua tela de destino
               }),
             );
           }
@@ -239,7 +236,7 @@ class _TelaLoginState extends State<TelaLogin> {
           email: _emailControler.text, senha: _senhalControler.text);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => NubankScreen()),
+        MaterialPageRoute(builder: (context) => const NubankScreen()),
       );
       print("Usuario verificado!");
     } catch (e) {

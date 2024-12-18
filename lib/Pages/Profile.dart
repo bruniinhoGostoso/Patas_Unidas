@@ -13,6 +13,7 @@ class _ProfilleState extends State<Profille> {
 TextEditingController  nomeP = TextEditingController();
 
 
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -345,10 +346,10 @@ TextEditingController  nomeP = TextEditingController();
                       onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white54),
+                        WidgetStateProperty.all<Color>(Colors.white54),
                         fixedSize:
-                        MaterialStateProperty.all(const Size(150, 50)),
-                        shape: MaterialStateProperty.all(
+                        WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(7),
                           ),
@@ -368,10 +369,10 @@ TextEditingController  nomeP = TextEditingController();
                       onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blueGrey),
+                        WidgetStateProperty.all<Color>(Colors.blueGrey),
                         fixedSize:
-                        MaterialStateProperty.all(const Size(150, 50)),
-                        shape: MaterialStateProperty.all(
+                        WidgetStateProperty.all(const Size(150, 50)),
+                        shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(7),
                           ),
@@ -422,9 +423,9 @@ buildButoooooomm(String nome, String nome2) {
         onPressed: () {},
         style: ButtonStyle(
           backgroundColor:
-          MaterialStateProperty.all<Color>(Colors.blueGrey.shade200),
-          fixedSize: MaterialStateProperty.all(const Size(150, 50)),
-          shape: MaterialStateProperty.all(
+          WidgetStateProperty.all<Color>(Colors.blueGrey.shade200),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7),
             ),
@@ -442,9 +443,9 @@ buildButoooooomm(String nome, String nome2) {
         onPressed: () {},
         style: ButtonStyle(
           backgroundColor:
-          MaterialStateProperty.all<Color>(Colors.blueGrey.shade200),
-          fixedSize: MaterialStateProperty.all(const Size(150, 50)),
-          shape: MaterialStateProperty.all(
+          WidgetStateProperty.all<Color>(Colors.blueGrey.shade200),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7),
             ),

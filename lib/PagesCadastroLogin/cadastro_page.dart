@@ -1,17 +1,9 @@
-import 'package:agora/Menu.dart';
-import 'package:agora/PagesCadastroLogin/Login_Page.dart';
-import 'package:agora/Pages/Profile.dart';
-import 'package:agora/servico/autenticacao.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:patas/Pages/Profile.dart';
+import 'package:patas/PagesCadastroLogin/Login_Page.dart';
+import 'package:patas/servico/autenticacao.dart';
 
-import '../Pages/Profile.dart';
-import '../servico/autenticacao.dart';
-import 'Login_Page.dart';
 
 
 class novaTelaEntrar extends StatefulWidget {
@@ -27,11 +19,11 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
 
   final _formkey = GlobalKey<FormState>();
 
-  TextEditingController _emailControler = TextEditingController();
-  TextEditingController _senhalControler = TextEditingController();
-  TextEditingController _nomeControler = TextEditingController();
+  final TextEditingController _emailControler = TextEditingController();
+  final TextEditingController _senhalControler = TextEditingController();
+  final TextEditingController _nomeControler = TextEditingController();
 //
-  autenticacaoservico _servico = autenticacaoservico();
+  final autenticacaoservico _servico = autenticacaoservico();
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +35,14 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
             Container(
               width: 500,
               height: 170,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0XFF0583F2),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
                   bottomRight: Radius.circular(50),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(height: 12),
@@ -65,14 +57,14 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 32.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 32.0),
               child: Form(
                 key: _formkey,
                 child: Column(
                   children: [
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     TextFormField(
                       controller: _emailControler,
                       decoration: getAuthenticationInputDecoration(
@@ -90,7 +82,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
 
                     TextFormField(
                       controller: _senhalControler,
@@ -107,30 +99,30 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                       },
                       obscureText: true,
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     TextFormField(
                       decoration: getAuthenticationInputDecoration(
                           "Confirme sua senha",
                           icon: Icons.lock_reset_sharp),
                       obscureText: true,
                     ),
-                    SizedBox(height: 25),
-                    Center(
+                    const SizedBox(height: 25),
+                    const Center(
                       child: Text(
                         "Ao clicar 'Cadastrar', você com com os \n Termos e Condições.",
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: ElevatedButton(
                         onPressed: () {
                           botaoClicado();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0XFF0583F2),
+                          backgroundColor: const Color(0XFF0583F2),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
@@ -150,14 +142,14 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                         ),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(16),
                       child: Center(child: Text("Ou")),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 25,
                           backgroundColor: Colors.white,
                           child: Icon(
@@ -166,7 +158,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
                             size: 50,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         CircleAvatar(
                           radius: 40,
                           backgroundColor: Colors.transparent,
@@ -207,7 +199,7 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
-        return  TelaLogin();
+        return  const TelaLogin();
       }),
     );
   }
@@ -222,13 +214,13 @@ class _novaTelaEntrarState extends State<novaTelaEntrar> {
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Cadastro realizado com sucesso!")),
+          const SnackBar(content: Text("Cadastro realizado com sucesso!")),
         );
 
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) {
-            return Profille() ;
+            return const Profille() ;
           }),
         );
 

@@ -1,15 +1,15 @@
-import 'package:agora/Menu.dart';
-import 'package:agora/PagesCadastroLogin/cadastro_page.dart';
-import 'package:agora/db/sharedPrefs.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:patas/Menu.dart';
+import 'package:patas/PagesCadastroLogin/cadastro_page.dart';
+import 'package:patas/db/sharedPrefs.dart';
 
 import '../servico/autenticacaoLogin.dart';
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
 
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => NubankScreen()),
+          MaterialPageRoute(builder: (context) => const NubankScreen()),
         );
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Erro ao fazer login: Referente ao validador')),
+        const SnackBar(content: Text('Erro ao fazer login: Referente ao validador')),
       );
     }
   }
