@@ -1,11 +1,10 @@
-import 'dart:async';
-import 'package:agora/Pages/Profile.dart';
-import 'package:agora/Pages/telaInicial_page.dart';
-import 'package:agora/TentandoDnv.dart';
-import 'package:agora/servico/deslogarCouts.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:patas/Pages/Profile.dart';
+import 'package:patas/Pages/telaInicial_page.dart';
+import 'package:patas/TentandoDnv.dart';
 
 class NubankScreen extends StatefulWidget {
   //final User user;
@@ -18,7 +17,7 @@ class NubankScreen extends StatefulWidget {
 
 class _NubankScreenState extends State<NubankScreen> {
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+  final int _currentPage = 0;
 
 
   final List<String> images = [
@@ -108,7 +107,7 @@ class _NubankScreenState extends State<NubankScreen> {
                   await FirebaseAuth.instance.signOut();
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => telaInicial()),
+                    MaterialPageRoute(builder: (context) => const telaInicial()),
                   );
                 },
               )
@@ -153,7 +152,7 @@ class _NubankScreenState extends State<NubankScreen> {
                               );
 
                             },
-                            child:  Text(
+                            child:  const Text(
                               'Minha Conta',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -163,7 +162,7 @@ class _NubankScreenState extends State<NubankScreen> {
                             ),
                           ),
 
-                          Icon(Icons.arrow_forward_ios,
+                          const Icon(Icons.arrow_forward_ios,
                               size: 16, color: Colors.white),
                         ],
                       ),

@@ -1,7 +1,6 @@
-import 'package:agora/Pages/telaInicial_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:patas/Pages/telaInicial_page.dart';
 
 import '../Menu.dart';
 import '../db/sharedPrefs.dart';
@@ -20,14 +19,14 @@ class _RoteadorPageState extends State<RoteadorPage> {
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(future: SharedPrefs().getUser(), builder: (context, snapshot){
       if(!snapshot.hasData){
-
-        return Center(child: CircularProgressIndicator());
         _of.deslogar();
+        return const Center(child: CircularProgressIndicator());
+
       }else if(snapshot.hasData == true && FirebaseAuth.instance.currentUser != null){
-        return NubankScreen();
+        return const NubankScreen();
 
       }
-      return telaInicial();
+      return const telaInicial();
 
     });
   }

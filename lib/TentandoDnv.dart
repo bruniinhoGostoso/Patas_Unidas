@@ -1,7 +1,6 @@
-import 'package:agora/petss/pet_card.dart';
-import 'package:agora/petss/pet_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:patas/petss/pet_card.dart';
+import 'package:patas/petss/pet_controller.dart';
 
 
 
@@ -23,13 +22,13 @@ class _TentandodnvState extends State<Tentandodnv> {
       backgroundColor: Colors.lightBlue[100],
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Adote seu pet'),
+        title: const Text('Adote seu pet'),
         backgroundColor: Colors.lightBlue,
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Text(
               'Seja bem-vindo ao Patas Unidas! Conheça o cãozinho que vai alegrar sua vida.',
               textAlign: TextAlign.center,
@@ -40,7 +39,7 @@ class _TentandodnvState extends State<Tentandodnv> {
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(14.0),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,7 +13,7 @@ class telaCachorro extends StatefulWidget {
 
 class _telaCachorroState extends State<telaCachorro> {
   File? _image;
-  int _selectedButtonIndex = 0;
+  final int _selectedButtonIndex = 0;
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
@@ -30,14 +29,14 @@ class _telaCachorroState extends State<telaCachorro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF79B2E9),
+      backgroundColor: const Color(0XFF79B2E9),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -55,7 +54,7 @@ class _telaCachorroState extends State<telaCachorro> {
               ),
               child: _image == null
                   ? IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.add_a_photo,
                         color: Colors.white,
                         size: 50,
@@ -64,7 +63,7 @@ class _telaCachorroState extends State<telaCachorro> {
                     )
                   : null,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -74,7 +73,7 @@ class _telaCachorroState extends State<telaCachorro> {
                 fontWeight: FontWeight.normal,
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8),
               child: Column(
                 children: [

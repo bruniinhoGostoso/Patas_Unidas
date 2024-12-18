@@ -18,8 +18,8 @@ class _DetailpageState extends State<Detailpage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-                Center(
+                const SizedBox(height: 20),
+                const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -33,28 +33,28 @@ class _DetailpageState extends State<Detailpage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "Deseja adotar o cãozinho?",
                   style: TextStyle(
                     fontSize: 21,
                     color: Colors.black,
                   ),
                 ),
-                Text(
+                const Text(
                   "Para realizar a adoção é necessário que você preencha o formulário a seguir e aguarde o período de análise",
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: 40),
+                    const SizedBox(width: 40),
                     // Espaçamento entre o texto e o container
-                    Expanded(
+                    const Expanded(
                       child: Text(
                         "Nome:",
                         style: TextStyle(
@@ -73,13 +73,13 @@ class _DetailpageState extends State<Detailpage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: 30),
+                    const SizedBox(width: 30),
                     // Espaçamento entre o texto e o container
-                    Expanded(
+                    const Expanded(
                       child: Text(
                         "CPF:",
                         style: TextStyle(
@@ -98,44 +98,44 @@ class _DetailpageState extends State<Detailpage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 texto("E-mail:"),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 texto("Endereço:"),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 texto("CEP:"),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 texto("Profissão:"),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 botoes("Mora em >", "Casa Própria >"),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text(
+                  style: ButtonStyle(
+                    backgroundColor:
+                    WidgetStateProperty.all<Color>(Colors.blueAccent),
+                    fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+                    shape: WidgetStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
                     "Enviar",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.blueAccent),
-                    fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                    ),
-                  ),
                 ),
-                SizedBox(height: 20), // Espaçamento abaixo do botão
+                const SizedBox(height: 20), // Espaçamento abaixo do botão
               ],
             ),
           ),
@@ -149,11 +149,11 @@ Widget texto(String texto) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      SizedBox(width: 30), // Espaçamento entre o texto e o container
+      const SizedBox(width: 30), // Espaçamento entre o texto e o container
       Expanded(
         child: Text(
           texto,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.black87,
           ),
@@ -177,37 +177,37 @@ Widget botoes(String nome1, String nome2) {
     children: [
       ElevatedButton(
         onPressed: () {},
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
         child: Text(
           nome1,
-          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          fixedSize: MaterialStateProperty.all(Size(150, 50)),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
+          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
       ),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       ElevatedButton(
         onPressed: () {},
-        child: Text(
-          nome2,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          fixedSize: MaterialStateProperty.all(Size(150, 50)),
-          shape: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          fixedSize: WidgetStateProperty.all(const Size(150, 50)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
+          ),
+        ),
+        child: Text(
+          nome2,
+          style: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
